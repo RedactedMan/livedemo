@@ -3,9 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>LSEG St. Louis Technology Unconference 2025</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="voting.js" defer></script>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <header>
+        <div class="container">
+            <h1>LSEG St. Louis Technology Unconference 2025</h1>
+            <p class="event-date">Friday, October 3rd, 2025</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#sessions">Sessions</a></li>
+                <li><a href="#voting">Vote</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="schedule">
+            <h2>Event Schedule</h2>
+            <div class="schedule-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Training Room</th>
+                            <th>Board Room</th>
+                            <th>Cozy Corner</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>7:30 AM - 9:30 AM</td>
+                            <td colspan="3" class="general-event">Coffee Truck</td>
+                        </tr>
+                        <tr>
+                            <td>8:00 AM - 9:00 AM</td>
+                            <td colspan="3" class="general-event">Breakfast</td>
+                        </tr>
+                        <tr>
+                            <td>9:00 AM - 9:15 AM</td>
+                            <td class="general-event">Intro (Stephen Carson)</td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td>9:15 AM - 10:00 AM</td>
+                            <td colspan="3" class="general-event">Ice Breaker</td>
+                        </tr>
+                        <tr>
+                            <td>10:30 AM - 11:00 AM</td>
+                            <td class="session">Session Block 1</td>
+                            <td class="session">Session Block 1</td>
+                            <td class="session">Session Block 1</td>
+                        </tr>
+                        <tr>
+                            <td>11:30 AM - 12:00 PM</td>
+                            <td class="session">Session Block 2</td>
+                            <td class="session">Session Block 2</td>
+                            <td class="session">Session Block 2</td>
+                        </tr>
+                        <tr>
+                            <td>12:30 PM - 1:30 PM</td>
+                            <td colspan="3" class="general-event">Lunch</td>
+                        </tr>
+                        <tr>
+                            <td>1:30 PM - 2:00 PM</td>
+                            <td class="session">Session Block 3</td>
+                            <td class="session">Session Block 3</td>
+                            <td class="session">Session Block 3</td>
+                        </tr>
+                        <tr>
+                            <td>2:30 PM - 3:00 PM</td>
+                            <td colspan="3" class="general-event">Plenary Session</td>
+                        </tr>
+                        <tr>
+                            <td>3:00 PM - 3:30 PM</td>
+                            <td colspan="3" class="general-event">Voting</td>
+                        </tr>
+                        <tr>
+                            <td>3:30 PM - 4:00 PM</td>
+                            <td class="general-event">Wrap-up, Award Presenter Prizes</td>
+                            <td colspan="2"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="sessions">
+            <h2>Technical Sessions</h2>
+            <div class="sessions-grid">
+                <div class="session-card" data-session="code-sanitizers">
+                    <h3>Code Sanitizers</h3>
+                    <p class="presenter">Michael Morey</p>
+                    <p>Compiler-enabled tools to detect undefined or suspicious program behavior in memory-unsafe languages at runtime.</p>
+                    <div class="vote-buttons">
+                        <button class="vote-btn" data-category="scary">Most Scary</button>
+                        <button class="vote-btn" data-category="work">Most Work Related</button>
+                        <button class="vote-btn" data-category="engagement">Most Audience Engagement</button>
+                    </div>
+                </div>
+
+                <div class="session-card" data-session="ethical-genai">
+                    <h3>Ethical Considerations of GenAI</h3>
+                    <p class="presenter">Richard McWhirter</p>
+                    <p>Critical thinking about technology eroding critical thinking.</p>
+                    <div class="vote-buttons">
+                        <button class="vote-btn" data-category="scary">Most Scary</button>
+                        <button class="vote-btn" data-category="work">Most Work Related</button>
+                        <button class="vote-btn" data-category="engagement">Most Audience Engagement</button>
+                    </div>
+                </div>
+
+                <div class="session-card" data-session="vibe-coding">
+                    <h3>Vibe Coding</h3>
+                    <p class="presenter">Lucas Hinkebein</p>
+                    <p>Getting the most out of coding with AI.</p>
+                    <div class="vote-buttons">
+                        <button class="vote-btn" data-category="scary">Most Scary</button>
+                        <button class="vote-btn" data-category="work">Most Work Related</button>
+                        <button class="vote-btn" data-category="engagement">Most Audience Engagement</button>
+                    </div>
+                </div>
+
+                <div class="session-card" data-session="privatizing-life">
+                    <h3>Privatizing Your Life</h3>
+                    <p class="presenter">Travis Menghini</p>
+                    <p>Setting up a personal media server at home for safe and secure storage.</p>
+                    <div class="vote-buttons">
+                        <button class="vote-btn" data-category="scary">Most Scary</button>
+                        <button class="vote-btn" data-category="work">Most Work Related</button>
+                        <button class="vote-btn" data-category="engagement">Most Audience Engagement</button>
+                    </div>
+                </div>
+
+                <div class="session-card" data-session="evolution-app">
+                    <h3>Evolution of an App</h3>
+                    <p class="presenter">Tathagata Dasgupta</p>
+                    <p>Migrating from single node to distributed solution using strategic LSEG tools.</p>
+                    <div class="vote-buttons">
+                        <button class="vote-btn" data-category="scary">Most Scary</button>
+                        <button class="vote-btn" data-category="work">Most Work Related</button>
+                        <button class="vote-btn" data-category="engagement">Most Audience Engagement</button>
+                    </div>
+                </div>
+
+                <div class="session-card" data-session="developer-success">
+                    <h3>Developer Success</h3>
+                    <p class="presenter">Alex Temple</p>
+                    <p>Supporting developers in their journey at LSEG with enhanced technical support.</p>
+                    <div class="vote-buttons">
+                        <button class="vote-btn" data-category="scary">Most Scary</button>
+                        <button class="vote-btn" data-category="work">Most Work Related</button>
+                        <button class="vote-btn" data-category="engagement">Most Audience Engagement</button>
+                    </div>
+                </div>
+
+                <div class="session-card" data-session="photo-editing">
+                    <h3>Photo Editing Using Lightroom and Photoshop</h3>
+                    <p class="presenter">James Chaney</p>
+                    <p>Latest AI photo editing capabilities for wildlife, landscape and portrait photography.</p>
+                    <div class="vote-buttons">
+                        <button class="vote-btn" data-category="scary">Most Scary</button>
+                        <button class="vote-btn" data-category="work">Most Work Related</button>
+                        <button class="vote-btn" data-category="engagement">Most Audience Engagement</button>
+                    </div>
+                </div>
+
+                <div class="session-card" data-session="ai-web-stack">
+                    <h3>The AI Web Stack: From Zero to Hosted</h3>
+                    <p class="presenter">Matthew Schrenk</p>
+                    <p>Using AI to create and host websites from scratch.</p>
+                    <div class="vote-buttons">
+                        <button class="vote-btn" data-category="scary">Most Scary</button>
+                        <button class="vote-btn" data-category="work">Most Work Related</button>
+                        <button class="vote-btn" data-category="engagement">Most Audience Engagement</button>
+                    </div>
+                </div>
+
+                <div class="session-card" data-session="secure-cpp">
+                    <h3>Secure Coding Standards for C++</h3>
+                    <p class="presenter">Guanyu Tian</p>
+                    <p>Buffer overflow, string vulnerabilities, integer conversion issues and mitigation strategies.</p>
+                    <div class="vote-buttons">
+                        <button class="vote-btn" data-category="scary">Most Scary</button>
+                        <button class="vote-btn" data-category="work">Most Work Related</button>
+                        <button class="vote-btn" data-category="engagement">Most Audience Engagement</button>
+                    </div>
+                </div>
+
+                <div class="session-card" data-session="agentic-ai">
+                    <h3>Agentic AI: An Architectural Framework</h3>
+                    <p class="presenter">Mark Sandford</p>
+                    <p>Hourglass Model and Model Context Protocol (MCP) for AI agents and tools.</p>
+                    <div class="vote-buttons">
+                        <button class="vote-btn" data-category="scary">Most Scary</button>
+                        <button class="vote-btn" data-category="work">Most Work Related</button>
+                        <button class="vote-btn" data-category="engagement">Most Audience Engagement</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="voting">
+            <h2>Voting Results</h2>
+            <div class="voting-results">
+                <div class="category-results">
+                    <h3>Most Scary</h3>
+                    <div id="scary-results" class="results-list"></div>
+                </div>
+                <div class="category-results">
+                    <h3>Most Work Related</h3>
+                    <div id="work-results" class="results-list"></div>
+                </div>
+                <div class="category-results">
+                    <h3>Most Audience Engagement</h3>
+                    <div id="engagement-results" class="results-list"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 LSEG St. Louis Technology Unconference</p>
+        </div>
+    </footer>
 </body>
 </html>

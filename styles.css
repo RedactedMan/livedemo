@@ -1,0 +1,290 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #262626;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background: #262626;
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+header h1 {
+    font-family: 'LSEG Motto', 'Proxima Nova', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.event-date {
+    font-size: 1.3rem;
+    font-weight: 300;
+    opacity: 0.95;
+}
+
+nav {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+nav li {
+    margin: 0 1.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #001EFF;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #262626;
+}
+
+main {
+    padding: 3rem 20px;
+}
+
+section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+h2 {
+    font-family: 'LSEG Motto', 'Proxima Nova', sans-serif;
+    color: #262626;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid #001EFF;
+    padding-bottom: 0.5rem;
+}
+
+.schedule-table {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+thead {
+    background-color: #001EFF;
+    color: white;
+}
+
+th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tbody tr:hover {
+    background-color: #f0f4ff;
+}
+
+.general-event {
+    background-color: #e8f0ff;
+    font-weight: 500;
+    text-align: center;
+}
+
+.session {
+    background-color: #f5f5f5;
+    font-style: italic;
+    text-align: center;
+}
+
+.sessions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.session-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.session-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 30, 255, 0.15);
+    border-color: #001EFF;
+}
+
+.session-card h3 {
+    font-family: 'LSEG Motto', 'Proxima Nova', sans-serif;
+    color: #001EFF;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.presenter {
+    color: #262626;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.session-card p:last-child {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.vote-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.vote-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 0.6rem 1rem;
+    background-color: white;
+    border: 2px solid #001EFF;
+    color: #001EFF;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.vote-btn:hover {
+    background-color: #001EFF;
+    color: white;
+}
+
+.vote-btn.voted {
+    background-color: #001EFF;
+    color: white;
+}
+
+.voting-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.category-results h3 {
+    font-family: 'LSEG Motto', 'Proxima Nova', sans-serif;
+    color: #001EFF;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border: none;
+    padding: 0;
+}
+
+.results-list {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 200px;
+}
+
+.result-item {
+    background-color: white;
+    border-left: 4px solid #001EFF;
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result-item:last-child {
+    margin-bottom: 0;
+}
+
+.result-name {
+    font-weight: 600;
+    color: #262626;
+}
+
+.result-votes {
+    background-color: #001EFF;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+footer {
+    background-color: #262626;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .event-date {
+        font-size: 1.1rem;
+    }
+
+    nav li {
+        margin: 0 1rem;
+    }
+
+    .sessions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 0.7rem;
+    }
+}
