@@ -1,4 +1,4 @@
-// Voting system for LSEG Unconference
+// Voting system for LSEG Unconference with Firebase backend
 const votes = {
     scary: {},
     work: {},
@@ -25,6 +25,18 @@ const userVotes = {
     engagement: null
 };
 
+// Generate or retrieve unique user ID
+function getUserId() {
+    let userId = localStorage.getItem('unconferenceUserId');
+    if (!userId) {
+        userId = 'user_' + Math.random().toString(36).substring(2, 11) + '_' + Date.now();
+        localStorage.setItem('unconferenceUserId', userId);
+    }
+    return userId;
+}
+
+const userId = getUserId();
+
 // Initialize votes
 Object.keys(sessionNames).forEach(session => {
     votes.scary[session] = 0;
@@ -32,8 +44,43 @@ Object.keys(sessionNames).forEach(session => {
     votes.engagement[session] = 0;
 });
 
-// Load votes from localStorage
-function loadVotes() {
+// Load votes from Firebase
+function loadVotesFromFirebase() {
+    if (typeof firebase === 'undefined' || !firebase.database) {
+        console.warn('Firebase not available, using localStorage fallback');
+        loadVotesFromLocalStorage();
+        return;
+    }
+
+    const votesRef = database.ref('votes');
+    const userVotesRef = database.ref('userVotes/' + userId);
+
+    // Listen for real-time vote updates
+    votesRef.on('value', (snapshot) => {
+        const firebaseVotes = snapshot.val();
+        if (firebaseVotes) {
+            // Update local votes object
+            Object.keys(votes).forEach(category => {
+                if (firebaseVotes[category]) {
+                    votes[category] = firebaseVotes[category];
+                }
+            });
+            updateResults();
+        }
+    });
+
+    // Load user's own votes
+    userVotesRef.on('value', (snapshot) => {
+        const firebaseUserVotes = snapshot.val();
+        if (firebaseUserVotes) {
+            Object.assign(userVotes, firebaseUserVotes);
+            restoreVotedState();
+        }
+    });
+}
+
+// Load votes from localStorage (fallback)
+function loadVotesFromLocalStorage() {
     const savedVotes = localStorage.getItem('unconferenceVotes');
     const savedUserVotes = localStorage.getItem('unconferenceUserVotes');
 
@@ -46,8 +93,31 @@ function loadVotes() {
     }
 }
 
-// Save votes to localStorage
-function saveVotes() {
+// Save votes to Firebase
+function saveVotesToFirebase() {
+    if (typeof firebase === 'undefined' || !firebase.database) {
+        console.warn('Firebase not available, using localStorage fallback');
+        saveVotesToLocalStorage();
+        return;
+    }
+
+    const votesRef = database.ref('votes');
+    const userVotesRef = database.ref('userVotes/' + userId);
+
+    // Save aggregated votes
+    votesRef.set(votes).catch(error => {
+        console.error('Error saving votes to Firebase:', error);
+        saveVotesToLocalStorage();
+    });
+
+    // Save user's votes
+    userVotesRef.set(userVotes).catch(error => {
+        console.error('Error saving user votes to Firebase:', error);
+    });
+}
+
+// Save votes to localStorage (fallback)
+function saveVotesToLocalStorage() {
     localStorage.setItem('unconferenceVotes', JSON.stringify(votes));
     localStorage.setItem('unconferenceUserVotes', JSON.stringify(userVotes));
 }
@@ -79,7 +149,7 @@ function handleVote(event) {
     button.classList.add('voted');
 
     // Save votes
-    saveVotes();
+    saveVotesToFirebase();
 
     // Update results display
     updateResults();
@@ -132,16 +202,13 @@ function restoreVotedState() {
 
 // Initialize voting system
 document.addEventListener('DOMContentLoaded', () => {
-    // Load saved votes
-    loadVotes();
+    // Load votes from Firebase (or localStorage if Firebase unavailable)
+    loadVotesFromFirebase();
 
     // Add click handlers to all vote buttons
     document.querySelectorAll('.vote-btn').forEach(button => {
         button.addEventListener('click', handleVote);
     });
-
-    // Restore voted button states
-    restoreVotedState();
 
     // Update results display
     updateResults();
